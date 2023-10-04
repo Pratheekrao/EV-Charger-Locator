@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>EV Charger Locator</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing:border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(55, 70, 89);
+}
+
+.sidenav {
+  height: 685px;
+  width: 470px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: rgb(32, 40, 51);
+  overflow-x: hidden;
+  margin-top: 150px;
+  margin-left: 10px;
+  border-radius: 10px;
+}
+.text{
+  text-align: center;
+  font-size: xx-large;
+  color: rgb(102, 252, 241);
+}
+.subtext{
+  text-align: center;
+  color: rgb(103, 245, 255);
+
+}
+
+.content {
+  margin-left: 500px;
+  padding-left: 0px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 5px solid rgb(32, 40, 51);
+}
+.EV{
+  background-color: rgb(32, 40, 51);
+  height: 130px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  text-align: center;
+  color: rgb(103, 245, 255);
+  text-shadow: rgb(93, 92, 97);
+  font-size: xx-large;
+  border-radius: 5px;
+}
+#map{
+            width: 66.5%;
+            height : 80vh;
+        }
+.embed{
+  border-radius: 25px;
+  align-content: center;
+}
+.border{
+  border-right: 4px solid rgb(32, 40, 51);
+  font-size: 20px;
+}
+a{
+  color:rgb(102, 252, 241);
+  text-decoration: none;
+}
+
+
+</style>
+</head>
+<body>
+  <div class="EV">
+    🔌EV Charger Locator🪫
+  <h4><a href="" class="border">🏠Home</a><a href="ADD.html" class="border">⚡Add your charger</a><a href="" class="border">👤About</a></h4>
+  </div>
+<div class="sidenav" >
+  <p class="text">Battery Parametres</p>
+  <h3 class="subtext">Voltage</h3>
+  <iframe class="embed" width="450" height="260" style="border: 8px solid #5e5b5bd6;" src="https://thingspeak.com/channels/2237307/widgets/700765"></iframe>
+  <h3 class="subtext">Percentage</h3>
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2237307/widgets/702622"></iframe>
+  <h3 class="subtext">Battery Voltage vs Time</h3>
+  <iframe width="450" height="260" style="border: 8px solid #5e5b5bd6;" src="https://thingspeak.com/channels/2237307/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=V+vs+T&type=bar&xaxis=Time&yaxis=Voltage"></iframe>
+</div>
+
+   </div>
+</div>
+<div class="content" id="map">
+</div>
+
+
+</body>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js'></script><script  src="./script.js"></script>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet-knn@0.1.0/leaflet-knn.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<script src ="map.js"></script>
+<script src="index.js">
+ 
+</script>
+</html>
+

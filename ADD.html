@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<head>
+    <title>ADDRESS</title>
+    <link rel="stylesheet" href="ADD.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #6d706e;
+      }
+      
+      .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 30px;
+        background-color: rgb(249, 253, 251);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      .form-group {
+        margin-bottom: 15px;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+      }
+      input[type="text"] {
+        width: 200%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        outline: none;
+      }
+      button {
+        padding: auto;
+        width:400%;
+        background-color: #faf9f8;
+        color: rgb(8, 8, 8);
+        border: none;
+        border-radius: 10X;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      #map{
+            width: 80%;
+            margin-left: 10%;
+
+            height : 90vh;
+        }</style>
+</head>
+<body>
+    <section id="contact">
+  
+        <h1 class="section-header">ADDRESS</h1>
+        
+        <div class="contact-wrapper">
+        
+        <!-- Left contact page --> 
+          
+          <form id="contact-form" class="form-horizontal" role="form">
+             
+            <div class="form-group" id="div1">
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="name" placeholder="NAME" name="name" value="" required>
+              </div>
+            </div>
+            <div class="form-group" id="div1">
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="email" placeholder="E-MAIL" name="email" value="" required>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-12">
+                <select class="form-control input-lg" onchange="hideDiv(this)" name="category">
+                  <option selected="selected" value="cadd">Enter Address</option>
+                  <option  value="cmap">choose from map </option>
+        
+                </select>              
+              </div>
+            </div>
+            <div class="form-group" >
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="latlonglat" placeholder="ADDRESS LINE 1" name="addressline1" value="" required>
+              </div>
+            </div>
+            <div class="form-group" >
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="latlonglong" placeholder="ADDRESS LINE 2" name="addressline2" value="" required>
+              </div>
+            </div>
+            <!-- <div class="form-group"> 
+              <div class="col-sm-12">
+                <input type="email" class="form-control" id="email" placeholder="EMAIL" name="email" value="" required>
+                
+              </div>
+            </div> -->
+            <div id = "hideDiv">
+            
+            
+            
+            <div class="form-group" id="hideDiv">
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="city"  placeholder="CITY" name="city" value="" required>
+              </div>
+            </div>
+            <div class="form-group" id="hideDiv">
+              <div class="col-sm-12" >
+                <input type="text" class="form-control" id="state" placeholder="STATE" name="state" value="" required>
+              </div>
+            </div>
+          <div class="form-group">
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="country" placeholder="COUNTRY" name="country" value="" required>
+              </div>
+            </div>
+             <div class="form-group">
+              <div class="col-sm-12">
+                <input type="text" class="form-control" id="pincode" placeholder="PINCODE" name="pincode" value="" required>
+              </div>
+            </div>
+          </div>
+          
+            
+            
+          </form>
+          
+        <!-- Left contact page --> 
+          
+            <div class="direct-contact-container">
+      
+              <ul class="contact-list">
+                <li class="list-item"><i class="fa fa-map-marker fa-2x"><span class="contact-text place">RVCE,BENGALURU</span></i></li>
+                
+                <li class="list-item"><i class="fa fa-phone fa-2x"><span class="contact-text phone"><a href="tel:1-212-555-5555" title="Give me a call">55555 55555 </a></span></i></li>
+                
+                <li class="list-item"><i class="fa fa-envelope fa-2x"><span class="contact-text gmail"><a href="mailto:#" title="Send me an email">rvcebengaluru@gmail.com</a></span></i></li>
+                
+              </ul>
+      
+              <hr>
+              <ul class="social-media-list">
+                <li><a href="#" target="_blank" class="contact-icon">
+                  <i class="fa fa-github" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="#" target="_blank" class="contact-icon">
+                  <i class="fa fa-codepen" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="#" target="_blank" class="contact-icon">
+                  <i class="fa fa-twitter" aria-hidden="true"></i></a>
+                </li>
+                <li><a href="#" target="_blank" class="contact-icon">
+                  <i class="fa fa-instagram" aria-hidden="true"></i></a>
+                </li>       
+              </ul>
+              <hr>
+      
+              <div class="copyright">&copy; ALL OF THE RIGHTS RESERVED</div>
+      
+            </div>
+          
+        </div>
+
+        <div id=map>
+        </div>
+        
+      </section>  
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script>
+      <script src="form.js"></script>
+      <button onclick ="findAddress()" class="btn btn-primary send-button" form="contact-form" id="submit1"  type="submit"  value="SEND">
+        <div class="alt-send-button">
+          <i class="fa fa-paper-plane"></i><span class="send-text">SEND</span>
+        </div>
+      
+      </button>
+
+    </body>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="ADD.js"></script>
+    <script>
+function hideDiv(elem) {
+    if(elem.value == "cadd"){
+      document.getElementById('hideDiv').style.visibility = "visible";
+      //document.getElementById('address2').removeAttribute("required");
+      document.getElementById('city').removeAttribute("required");
+      document.getElementById('state').removeAttribute("required");
+      document.getElementById('country').removeAttribute("required");
+      document.getElementById('pincode').removeAttribute("required");
+
+        document.getElementById('map').style.visibility = "hidden";
+}
+
+    else{
+      document.getElementById('map').style.visibility = "visible";
+	    document.getElementById('hideDiv').style.visibility = "hidden";
+	
+      var elem = document.getElementById("map");
+        elem.scrollIntoView();
+        
+    }
+}
+
+
+
+    </script>
+    <script src="jquery-1.6.1.js"></script>
+    <script src="my_jquery.js"></script>
+    </html>
+        
+        
